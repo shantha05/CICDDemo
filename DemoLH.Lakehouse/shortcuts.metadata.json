@@ -1,0 +1,26 @@
+[
+  {
+    "name": "FactTables",
+    "path": "/Files",
+    "target": {
+      "type": "AdlsGen2",
+      "adlsGen2": {
+        "connectionId": "9123b79e-31cf-45c3-9aca-82352e1372eb",
+        "location": "https://stfabricrawdata.dfs.core.windows.net",
+        "subpath": "/adventureworks01//FactTables"
+      }
+    }
+  },
+  {
+    "name": "DimensionTables",
+    "path": "/Files",
+    "target": {
+      "type": "AdlsGen2",
+      "adlsGen2": {
+        "connectionId": "9123b79e-31cf-45c3-9aca-82352e1372eb",
+        "location": "https://stfabricrawdata.dfs.core.windows.net",
+        "subpath": "/adventureworks01//DimensionTables"
+      }
+    }
+  }
+]

@@ -1,0 +1,196 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "DelimitedTextSource",
+            "formatSettings": {
+              "type": "DelimitedTextReadSettings",
+              "skipLineCount": 0
+            },
+            "storeSettings": {
+              "type": "AzureBlobFSReadSettings",
+              "recursive": true,
+              "enablePartitionDiscovery": false
+            },
+            "datasetSettings": {
+              "type": "DelimitedText",
+              "typeProperties": {
+                "location": {
+                  "type": "AzureBlobFSLocation",
+                  "fileSystem": "adventureworks01"
+                },
+                "columnDelimiter": ",",
+                "quoteChar": "\"",
+                "escapeChar": "\\",
+                "firstRowAsHeader": true
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "747e311b-7fb1-438f-b7bb-141b6e4f3bb1"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "OverwriteSchema",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "table": "DimAccount"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "DemoLH",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "fec77e73-c635-9adc-4801-39b380ec0a9e",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "mappings": [
+              {
+                "source": {
+                  "name": "AccountKey",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "AccountKey",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "ParentAccountKey",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "ParentAccountKey",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "AccountCodeAlternateKey",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "AccountCodeAlternateKey",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "ParentAccountCodeAlternateKey",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "ParentAccountCodeAlternateKey",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "AccountDescription",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "AccountDescription",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "AccountType",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "AccountType",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Operator",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Operator",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "CustomMembers",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "CustomMembers",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "ValueType",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "ValueType",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "CustomMemberOptions",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "CustomMemberOptions",
+                  "physicalType": "string"
+                }
+              }
+            ],
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Copy_x28",
+        "dependsOn": []
+      }
+    ]
+  }
+}
